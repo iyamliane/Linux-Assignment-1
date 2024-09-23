@@ -48,3 +48,17 @@ We will be adding a custom image to deploy the server with a pre-configured envi
 3. Click the blue **"Upload Image"** button
 4. Add the custom image that you downloaded earlier
 
+## Creating a new Droplet ##
+This refers to the process of adding a virtual server(instance) in the cloud. A droplet is basically a virtual machine (VM) in the DigitalOcean infrastructure. You are able to choose from a wide variety of operating systems but in our case we will be using Arch. 
+
+1. Click the green **"Create"** button in the upper right corner
+2. Choose the region **"San Francisco"**
+3. Choose **"Datacenter 3 / SFO3"** 
+4. Click **"Custom Images"** and add the Arch image
+5. Choose **"Basic"** for size
+6. Choose **"7/mo"** for CPU options under **"Premium AMD"**
+7. Choose the previously added SSH key for **"Authentication Method"**
+8. Choose a hostname 
+>Click on the IP address and it will copy to  your clipboard. We will be using it to connect to the server.
+
+## Connect to your Droplet ##
