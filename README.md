@@ -1,6 +1,6 @@
 # Digital Ocean Server Setup #
 
->Note: This tutorial assumes that the user is using Windows Powershell.
+>***Note:*** This tutorial assumes that the user is using Windows Powershell.
 
 <h2>Creating SSH Keys </h2>
 
@@ -64,7 +64,7 @@ Using the cloud-init allows you to automate the setup of your server when it is 
 
 > The simplest way to configure a server with cloud-init is by using a config (**YAML**) file.
 
-- After adding your SSH key, you will want to click on **"Advanced Options"**
+- After adding your SSH key, click on **"Advanced Options"**
 - Click **"Add initialization scripts(free)"** <br>
 Copy the following into the text box below:
 ```
@@ -92,4 +92,16 @@ disable_root: true
 ![screenshot](https://cdn.discordapp.com/attachments/1194392650858643528/1287586369811779634/image.png?ex=66f215c0&is=66f0c440&hm=7f731344a5872db70143f46ad4cf740f89144de63bf2fee0b65ae76c0e8da9bb&)
 
 
->Click on the IP address and it will copy to  your clipboard. We will be using it to connect to the server.
+>***Note:*** change the ```name``` to a username you want for the new user, ```primary group``` refers to the main group associated with the user. You can change it ```user-group``` to ```users```.
+
+## Connecting to your Server ##
+Once your droplet is created and the configuration has been setup, you can connect to it with SSH.
+1. Type the following command into the terminal:<br>
+```ssh -i .ssh/do-key arch@your_droplet_ip_address```
+
+2. replace ```your_droplet_ip``` with your actual droplet IP address. 
+- ```-i``` is the path to the private key file
+- arch = your username
+> ***Note:*** to get the droplet IP address, go to your **"Droplets"** and hover over **"ipv4"** and click **"Copy"** 
+
+3. To exit your SSH connect, type ```exit``` and press **"Enter"**
