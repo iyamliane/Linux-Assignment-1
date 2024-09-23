@@ -35,8 +35,16 @@ After creating the key pair, you can **type** the following into the terminal to
 5. Give the key a name
 
 ## Adding the Custom Arch Linux Image ##
-We will be adding a custom image to deploy the server with a pre-configured environment. 
+We will be adding a custom image to deploy the server with a pre-configured environment as DigitalOcean does not have a default image for Arch. 
 - Download the [Arch Linux](https://gitlab.archlinux.org/archlinux/arch-boxes/-/packages/) image
 - Make sure it is the most recent **"clowdimg"**
 
 ![screenshot](https://cdn.discordapp.com/attachments/1194392650858643528/1287573588051886211/image.png?ex=66f209d9&is=66f0b859&hm=cb2b176201375b90e4282d9264ed4ea266d31ed6f336f5254757603403912978&)
+
+>**qcow2** is a format that is commonly used for disk images. It is great for virtual machines/backups and supports a variety of useful features (compression, copy-on-write).
+
+1. Look for **"Backups & Snapshots"** in the left menu
+2. Inside this menu, select **"Custom Images"**
+3. Click the blue **"Upload Image"** button
+4. Add the custom image that you downloaded earlier
+
