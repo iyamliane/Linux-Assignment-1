@@ -1,11 +1,11 @@
-# Linux-Assignment-1
-Digital Ocean Tutorial
+# Digital Ocean Server Setup #
+
+>Note: This tutorial assumes that the user is using Windows Powershell.
 
 <h2>Creating SSH Keys </h2>
 
 <p>Creating an SSH key pair provides an extra layer of security as it is a more secure authentication method. It will also simplify the process of accessing your server. </p>
 
->Note: This tutorial assumes that the user is using Windows Powershell.
 
 - Start in your home directory using ```~```
 - Create a .ssh directory in your home directory
@@ -58,7 +58,38 @@ This refers to the process of adding a virtual server(instance) in the cloud. A 
 5. Choose **"Basic"** for size
 6. Choose **"7/mo"** for CPU options under **"Premium AMD"**
 7. Choose the previously added SSH key for **"Authentication Method"**
-8. Choose a hostname 
->Click on the IP address and it will copy to  your clipboard. We will be using it to connect to the server.
 
-## Connect to your Droplet ##
+## cloud-init Setup ##
+Using the cloud-init allows you to automate the setup of your server when it is created in the cloud. This is particularly useful if you wanted to update/install packages for multiple servers.
+
+> The simplest way to configure a server with cloud-init is by using a config (**YAML**) file.
+
+- After adding your SSH key, you will want to click on **"Advanced Options"**
+- Click **"Add initialization scripts(free)"** <br>
+Copy the following into the text box below:
+```
+users:
+  - name: user-name #change me
+    primary_group: user-group # change me
+    groups: wheel
+    shell: /bin/bash
+    sudo: ['ALL=(ALL) NOPASSWD:ALL']
+    ssh-authorized-keys:
+      - ssh-ed25519 your-ssh-public-key # change this
+
+packages:
+  - ripgrep
+  - rsync
+  - neovim
+  - fd
+  - less
+  - man-db
+  - bash-completion
+  - tmux
+
+disable_root: true
+```
+![screenshot](https://cdn.discordapp.com/attachments/1194392650858643528/1287586369811779634/image.png?ex=66f215c0&is=66f0c440&hm=7f731344a5872db70143f46ad4cf740f89144de63bf2fee0b65ae76c0e8da9bb&)
+
+
+>Click on the IP address and it will copy to  your clipboard. We will be using it to connect to the server.
