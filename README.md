@@ -1,21 +1,33 @@
 # Digital Ocean Server Setup #
 
->***Note:*** This tutorial assumes that the user is using Windows Powershell.
+>***Note:*** This tutorial assumes that you are using Windows Powershell.
+
+Table of Contents: here
+
+**What is Digital Ocean?**
+
+Digital ocean provides cloud computing services (object storage, databases, block storage etc.) allowing users (developers, startups, businesses) to deploy their applications. Users can create and deploy their own virtual private servers also known as Droplets. 
+
+This tutorial will walk you through the process of 
+  1. Creating your SSH key pair
+  2. Uploading a custom Arch Linux image
+  3. Creating a new droplet
+  4. Cloud-init setup
+  5. Connecting to your server.
 
 <h2>Creating SSH Keys </h2>
 
-<p>Creating an SSH key pair provides an extra layer of security as it is a more secure authentication method. It will also simplify the process of accessing your server. </p>
+<p>Creating an SSH key pair provides an extra layer of security as it ensures your authentication method is secure. It will also simplify the process of accessing your server. We will be using the Windows terminal to complete the following steps. </p>
 
 
-- Start in your home directory using ```~```
-- Create a .ssh directory in your home directory
-
-
-**Type** the following command into the terminal: 
+- Start in your home directory by using this command:  ``` cd ~```
+- Create a .ssh directory in your home directory by using this command: ```mkdir .ssh```
+- Type the following command: 
 
 ```ssh-keygen -t ed25519 -f ~/.ssh/do-key -C "your email address```
 
-1. **ssh-keygen** is the command used to create the public/private keys
+
+1. **ssh-keygen** = the command used to create the public/private keys
 2. **-t** = the type of encryption used for this key
 3. **-f** = filename and where the file is located
 4. **-C** = comment (attaches a comment to the key)
@@ -24,17 +36,33 @@
 
 <h3> Copying SSH Keys to Clipboard</h3>
 
-After creating the key pair, you can **type** the following into the terminal to get the contents directly:
+Copying your SSH public key to the clipboard, will allow you to easily paste it into the appropriate configuration file or service without needing to navigate through directories or files.
+
+After creating the key pair, you can type the following into the terminal to get the contents directly:
 
 ```Get-Content C:\Users\your-user-name.ssh\do-key.pub | Set-Clipboard```
 
-1. Open DigitalOcean **"Settings"** in the left menu
+You want to open up digital ocean in your web browser. Complete the following steps next:
+
+1. Navigate to **"Settings"** in the left menu
+
+![settings](/attachments/settings.png) 
+
 2. Click **"Security"**
+
+![security](/attachments/security.png)
+
 3. Click **"Add SSH Key"** button
+
+![add-sshkey](/attachments/add-sshkey.png)
+
 4. Paste the public key into the **"SSH Key content"** box 
+
+![ssh-key-pase](/attachments/ssh-key-paste.png)
+
 5. Give the key a name
 
-## Adding the Custom Arch Linux Image ##
+## Uploading the Custom Arch Linux Image ##
 We will be adding a custom image to deploy the server with a pre-configured environment as DigitalOcean does not have a default image for Arch. 
 - Download the [Arch Linux](https://gitlab.archlinux.org/archlinux/arch-boxes/-/packages/) image
 - Make sure it is the most recent **"clowdimg"**
@@ -105,3 +133,5 @@ Once your droplet is created and the configuration has been setup, you can conne
 > ***Note:*** to get the droplet IP address, go to your **"Droplets"** and hover over **"ipv4"** and click **"Copy"** 
 
 3. To exit your SSH connect, type ```exit``` and press **"Enter"**
+
+dfjkgndkfgnfkg 
