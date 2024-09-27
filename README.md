@@ -1,12 +1,12 @@
-# Digital Ocean Server Setup #
+# DigitalOcean Server Setup #
 
 >***Note:*** This tutorial assumes that you are using Windows Powershell.
 
 Table of Contents: here
 
-**What is Digital Ocean?**
+**What is DigitalOcean?**
 
-Digital ocean provides cloud computing services (object storage, databases, block storage etc.) allowing users (developers, startups, businesses) to deploy their applications. Users can create and deploy their own virtual private servers also known as Droplets. 
+DigitalOcean provides cloud computing services (object storage, databases, block storage etc.) allowing users (developers, startups, businesses) to deploy their applications. Users can create and deploy their own virtual private servers also known as Droplets. 
 
 This tutorial will walk you through the process of 
   1. Creating your SSH key pair
@@ -21,7 +21,9 @@ This tutorial will walk you through the process of
 
 
 - Start in your home directory by using this command:  ``` cd ~```
+  - ```cd``` = change directory
 - Create a .ssh directory in your home directory by using this command: ```mkdir .ssh```
+  - ```mkdir``` = make directory
 - Type the following command: 
 
 ```ssh-keygen -t ed25519 -f ~/.ssh/do-key -C "your email address```
@@ -36,17 +38,17 @@ This tutorial will walk you through the process of
 
 <h3> Copying SSH Keys to Clipboard</h3>
 
-Copying your SSH public key to the clipboard, will allow you to easily paste it into the appropriate configuration file or service without needing to navigate through directories or files.
+Copying your SSH public key to the clipboard will allow you to easily paste it into the appropriate configuration file or service without needing to navigate through directories or files.
 
 After creating the key pair, you can type the following into the terminal to get the contents directly:
 
 ```Get-Content C:\Users\your-user-name.ssh\do-key.pub | Set-Clipboard```
 
-You want to open up digital ocean in your web browser. Complete the following steps next:
+You want to open up DigitalOcean in your web browser. Complete the following steps next:
 
-1. Navigate to **"Settings"** in the left menu
+1. Navigate to **"Settings"** in the left menu under **"Manage"**
 
-![settings](/attachments/settings.png) 
+![settings](/attachments/Settings.png) 
 
 2. Click **"Security"**
 
@@ -63,28 +65,62 @@ You want to open up digital ocean in your web browser. Complete the following st
 5. Give the key a name
 
 ## Uploading the Custom Arch Linux Image ##
-We will be adding a custom image to deploy the server with a pre-configured environment as DigitalOcean does not have a default image for Arch. 
-- Download the [Arch Linux](https://gitlab.archlinux.org/archlinux/arch-boxes/-/packages/) image
-- Make sure it is the most recent **"clowdimg"**
+A custom image specifically refers to a pre-configured template which includes an operating system, applications, and settings.
 
-![screenshot](https://cdn.discordapp.com/attachments/1194392650858643528/1287573588051886211/image.png?ex=66f209d9&is=66f0b859&hm=cb2b176201375b90e4282d9264ed4ea266d31ed6f336f5254757603403912978&)
+We will be adding a custom image to deploy the server with a pre-configured environment as DigitalOcean does not have a default image for Arch. 
+- Download the [Arch Linux](https://gitlab.archlinux.org/archlinux/arch-boxes/-/packages/) image by clicking the link: https://gitlab.archlinux.org/archlinux/arch-boxes/-/packages/
+
+- Click on 'images'
+
+![images](/attachments/arch-images.png)
+
+- Make sure it is the most recent **"clowdimg"** ending in **".qcow2"**
+
+![qcow2](/attachments/qcow2.png)
 
 >**qcow2** is a format that is commonly used for disk images. It is great for virtual machines/backups and supports a variety of useful features (compression, copy-on-write).
 
-1. Look for **"Backups & Snapshots"** in the left menu
+Once you have downloaded the image, open up DigitalOcean and complete the following steps:
+1. Look for **"Backups & Snapshots"** in the left menu under **"Manage"**
+
 2. Inside this menu, select **"Custom Images"**
+
+![backups-snapshots](/attachments/backup-snapshots.png)
+
 3. Click the blue **"Upload Image"** button
+
+![upload-image](/attachments/upload-image.png)
+
 4. Add the custom image that you downloaded earlier
+
+![example](/attachments/example.png)
 
 ## Creating a new Droplet ##
 This refers to the process of adding a virtual server(instance) in the cloud. A droplet is basically a virtual machine (VM) in the DigitalOcean infrastructure. You are able to choose from a wide variety of operating systems but in our case we will be using Arch. 
 
+You want to open up DigitalOcean in your web browser. Complete the following steps next:
+
 1. Click the green **"Create"** button in the upper right corner
-2. Choose the region **"San Francisco"**
+
+![create](/attachments/create-button.png)
+
+2. Click **"Droplets"** in the dropdown menu
+
 3. Choose **"Datacenter 3 / SFO3"** 
+
+![SFO](/attachments//SFO.png)
+
 4. Click **"Custom Images"** and add the Arch image
+
+![custom-image](/attachments/custom-upload.png)
+
 5. Choose **"Basic"** for size
+
+![basic](/attachments/basic.png
+)
+
 6. Choose **"7/mo"** for CPU options under **"Premium AMD"**
+
 7. Choose the previously added SSH key for **"Authentication Method"**
 
 ## cloud-init Setup ##
