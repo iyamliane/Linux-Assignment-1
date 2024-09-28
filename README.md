@@ -2,7 +2,6 @@
 
 >***Note:*** This tutorial assumes that you are using Windows Powershell.
 
-Table of Contents: here
 
 **What is DigitalOcean?**
 
@@ -13,7 +12,7 @@ This tutorial will walk you through the process of
   2. Uploading a custom Arch Linux image
   3. Creating a new droplet
   4. Cloud-init setup
-  5. Connecting to your server.
+  5. Connecting to your server
 
 <h2>Creating SSH Keys </h2>
 
@@ -85,11 +84,9 @@ Once you have downloaded the image, open up DigitalOcean and complete the follow
 
 2. Inside this menu, select **"Custom Images"**
 
-![backups-snapshots](/attachments/backup-snapshots.png)
-
 3. Click the blue **"Upload Image"** button
 
-![upload-image](/attachments/upload-image.png)
+![upload-image](/attachments/upload.png)
 
 4. Add the custom image that you downloaded earlier
 
@@ -102,7 +99,7 @@ You want to open up DigitalOcean in your web browser. Complete the following ste
 
 1. Click the green **"Create"** button in the upper right corner
 
-![create](/attachments/create-button.png)
+![create](/attachments/create-droplet.png)
 
 2. Click **"Droplets"** in the dropdown menu
 
@@ -121,6 +118,9 @@ You want to open up DigitalOcean in your web browser. Complete the following ste
 
 6. Choose **"7/mo"** for CPU options under **"Premium AMD"**
 
+![basic](/attachments/amd.png)
+
+
 7. Choose the previously added SSH key for **"Authentication Method"**
 
 ## cloud-init Setup ##
@@ -129,6 +129,9 @@ Using the cloud-init allows you to automate the setup of your server when it is 
 > The simplest way to configure a server with cloud-init is by using a config (**YAML**) file.
 
 - After adding your SSH key, click on **"Advanced Options"**
+
+![advanced](/attachments/advanced-options.png)
+
 - Click **"Add initialization scripts(free)"** <br>
 Copy the following into the text box below:
 ```
@@ -156,7 +159,7 @@ disable_root: true
 ![screenshot](https://cdn.discordapp.com/attachments/1194392650858643528/1287586369811779634/image.png?ex=66f215c0&is=66f0c440&hm=7f731344a5872db70143f46ad4cf740f89144de63bf2fee0b65ae76c0e8da9bb&)
 
 
->***Note:*** change the ```name``` to a username you want for the new user, ```primary group``` refers to the main group associated with the user. You can change it ```user-group``` to ```users```.
+>***Note:*** change the ```name``` to a username you want for the new user, ```primary group``` refers to the main group associated with the user. You can change ```user-group``` to ```users```.
 
 ## Connecting to your Server ##
 Once your droplet is created and the configuration has been setup, you can connect to it with SSH.
@@ -170,4 +173,32 @@ Once your droplet is created and the configuration has been setup, you can conne
 
 3. To exit your SSH connect, type ```exit``` and press **"Enter"**
 
-dfjkgndkfgnfkg 
+To make logging in your server easier, you can use this method of creating a config file in your .ssh directory so that you do not need to use a longer command in the terminal while logging in.
+
+1. Open the terminal and run the following command:
+
+   ```notepad your-user\.ssh\config```
+
+2. Inside of the configuration file note, add the following: 
+  ```
+    Host droplet-name
+    HostName XXX.XXX.XXX.XXX
+    User your-user
+    IdentityFile ~/.ssh/id_rsa
+```
+> ***Note:*** Make sure to replace ```droplet-name``` with the alias you will connect to the server with (e.g., arch), replace ```HostName``` with your droplet's IP address and replace ```your-user``` with the username on the server.
+
+3. Save notepad, and close the terminal
+
+4. Open the terminal again and type:
+
+```ssh droplet-name``` making sure to replace ```droplet-name``` with the alias you created to connect to the server with. 
+
+## References ##
+
+1. https://docs.digitalocean.com/products/droplets/how-to/automate-setup-with-cloud-init/
+2. https://docs.digitalocean.com/products/droplets/how-to/connect-with-ssh/
+3. https://docs.digitalocean.com/products/droplets/how-to/add-ssh-keys/
+4. https://gitlab.com/cit2420/2420-notes-f24/-/blob/main/2420-notes/week-two.md
+5. https://gitlab.com/cit2420/2420-notes-f24/-/blob/main/2420-notes/week-three.md
+6. https://www.techtarget.com/searchcloudcomputing/definition/DigitalOcean
