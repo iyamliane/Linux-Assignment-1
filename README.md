@@ -136,8 +136,8 @@ Using the cloud-init allows you to automate the setup of your server when it is 
 Copy the following into the text box below:
 ```
 users:
-  - name: user-name #change me
-    primary_group: user-group # change me
+  - name: user-name 
+    primary_group: user-group 
     groups: wheel
     shell: /bin/bash
     sudo: ['ALL=(ALL) NOPASSWD:ALL']
@@ -156,7 +156,7 @@ packages:
 
 disable_root: true
 ```
-![screenshot](https://cdn.discordapp.com/attachments/1194392650858643528/1287586369811779634/image.png?ex=66f215c0&is=66f0c440&hm=7f731344a5872db70143f46ad4cf740f89144de63bf2fee0b65ae76c0e8da9bb&)
+![screenshot](/attachments/config-file.png)
 
 
 >***Note:*** change the ```name``` to a username you want for the new user, ```primary group``` refers to the main group associated with the user. You can change ```user-group``` to ```users```.
