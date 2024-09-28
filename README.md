@@ -5,7 +5,7 @@
 
 **What is DigitalOcean?**
 
-DigitalOcean provides cloud computing services (object storage, databases, block storage etc.) allowing users (developers, startups, businesses) to deploy their applications. Users can create and deploy their own virtual private servers also known as Droplets. 
+DigitalOcean provides cloud computing services (object storage, databases, block storage etc.) allowing users (developers, startups, businesses) to deploy their applications. You can create and deploy your own virtual private servers also known as Droplets. 
 
 This tutorial will walk you through the process of:
   1. Creating your SSH key pair
