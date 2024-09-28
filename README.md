@@ -7,7 +7,7 @@
 
 DigitalOcean provides cloud computing services (object storage, databases, block storage etc.) allowing users (developers, startups, businesses) to deploy their applications. Users can create and deploy their own virtual private servers also known as Droplets. 
 
-This tutorial will walk you through the process of 
+This tutorial will walk you through the process of:
   1. Creating your SSH key pair
   2. Uploading a custom Arch Linux image
   3. Creating a new droplet
@@ -66,7 +66,7 @@ You want to open up DigitalOcean in your web browser. Complete the following ste
 ## Uploading the Custom Arch Linux Image ##
 A custom image specifically refers to a pre-configured template which includes an operating system, applications, and settings.
 
-We will be adding a custom image to deploy the server with a pre-configured environment as DigitalOcean does not have a default image for Arch. 
+You will be adding a custom image to deploy the server with a pre-configured environment as DigitalOcean does not have a default image for Arch. 
 - Download the [Arch Linux](https://gitlab.archlinux.org/archlinux/arch-boxes/-/packages/) image by clicking the link: https://gitlab.archlinux.org/archlinux/arch-boxes/-/packages/
 
 - Click on 'images'
@@ -99,7 +99,7 @@ You want to open up DigitalOcean in your web browser. Complete the following ste
 
 1. Click the green **"Create"** button in the upper right corner
 
-![create](/attachments/create-droplet.png)
+![create](/attachments/create.png)
 
 2. Click **"Droplets"** in the dropdown menu
 
